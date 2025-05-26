@@ -40,7 +40,8 @@ pub struct MakeOffer<'info> {
 
     // 报价中的代币存储账户，与token_mint_a相关联，由报价账户控制
     #[account(
-      mut,
+      init,
+      payer = maker,
       associated_token::mint = token_mint_a, // 关联到token_mint_a
       associated_token::authority = offer, // 权限属于报价账户
       associated_token::token_program = token_program // 使用的token程序
@@ -51,7 +52,7 @@ pub struct MakeOffer<'info> {
 
     pub system_program: Program<'info, System>, // Solana系统程序，用于支付租金等
 
-    pub associate_token_program: Program<'info, AssociatedToken>
+    pub associated_token_program: Program<'info, AssociatedToken>
 }
 
 // 处理函数，目前仅返回成功结果

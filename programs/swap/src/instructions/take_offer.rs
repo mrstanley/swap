@@ -97,8 +97,8 @@ pub fn withdraw_and_close_vault(ctx: Context<TakeOffer>) -> Result<()> {
     let accounts = TransferChecked {
         from: ctx.accounts.vault.to_account_info(),
         to: ctx.accounts.taker_token_account_a.to_account_info(),
+        mint: ctx.accounts.token_mint_a.to_account_info(),
         authority: ctx.accounts.offer.to_account_info(),
-        mint: ctx.accounts.token_mint_b.to_account_info(),
     };
 
     let cpi_context = CpiContext::new_with_signer(

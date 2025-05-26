@@ -9,6 +9,7 @@ crate-type = ["cdylib", "lib"]
 name = "swap"
 
 [features]
+anchor-debug = []
 default = []
 cpi = ["no-entrypoint"]
 no-entrypoint = []
